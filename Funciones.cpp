@@ -1,5 +1,29 @@
 #include "Funciones.h"
 
+void acceso(Administrador& admin){
+    int pass;
+    int intentos = 0;
+
+    while (intentos < MAX_INTENTOS) {
+        cout<< "Ingrese la contrasenia para acceder: ";
+        cin>> pass;
+
+        if(pass == password) {
+            cout << "Verificando contrasenia, espere un momento..." << endl;
+            Sleep(2500);
+
+            system("cls"); 
+            menu(admin);  
+            return;
+        } else {
+            intentos++;
+            cout<< "Contrasenia no valida. Intento " << intentos << " de " << MAX_INTENTOS << " permitidos." << endl;
+        }
+    }
+
+    cout<< "Acceso denegado. Demasiados intentos fallidos." << endl;
+}
+
 void menu(Administrador& admin){
     Asiento a;
     int opc, posicion;
